@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DojoPong</title>
+		
+		<link rel="stylesheet" href="pong.css"> 
+		<link rel="stylesheet" href="foundation.css"> 
+		<script type="text/javascript" src="jquery-1.9.1.js"></script>
+		<script>
+			$(document).ready(function(){
+				var hand_orig_pos = $('#shooting_hand').position();
+				var hand_end_pos ;
+				console.log(hand_orig_pos);
+
+				$("#start").on('click', function(){
+			   	animatethis($('#shooting_hand'), 700);
+			  });
+
+				function animatethis(targetElement, speed) {
+		    $(targetElement).animate({ marginLeft: "+=180px"},
+			    {
+			        duration: speed,
+			        complete: function ()
+			        {
+			            targetElement.animate({ marginLeft: "-=180px" },
+			            {
+			                duration: speed,
+			                complete: function ()
+			                {
+			                    animatethis(targetElement, speed);
+			                }
+			            });
+			        }
+			    });
+				};
+				
+				$("#stop").on('mousedown', function(){
+					$('#shooting_hand').stop(true);
+					var hand_end_pos = $('#shooting_hand').position();
+					console.log(hand_end_pos);
+				});
+				$("#stop").on('mouseup', function(){
+								$('#shooting_hand').css({"margin-left": "0px"}); 
+				});
+		});
+
+
+				
+
+
+		</script>
+	
+</head>
+<body>
+	
+	<div id="container">
+		<div class="row">
+			
+			<div class="small-4 columns small-offset-3" id='arena'>
+					<img class='cups' src="/assets/images/cups.png" alt="">
+					<img id='my_cups' class='cups' src="/assets/images/cups_reverse.png" alt="">
+					<img id='shooting_hand' src="/assets/images/shooting_hand.png" alt="">
+			</div>
+			<div class="small-3 columns">
+				<div id='shooting_meter'>
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-11 small-centered" id='button'>
+				<button class='small round' id='start'>start</button>
+				<button class='small round' id='stop'>stop</button>
+			</div>
+		</div>
+
+	</div>
+		
+
+	
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+
+#arena{
+	margin-top: 25px;
+	height:600px;
+	width:400px;
+	background-color: black;
+}
+
+.cups{
+	margin-left: 100px
+}
+
+#my_cups{
+	margin-top: 275px;
+}
+
+#start{
+		margin-right: 25px;
+		text-align: center;
+		margin-top: 15px;
+}
+
+#shooting_hand{
+	margin-top: -150px
+}
+
+#button{
+	text-align: center;
+}
+
+#shooting_meter{
+	margin-top: 175px;
+	height: 300px;
+	width: 35px;
+	background-color: orange;
+	border-radius: 5px;
+}
